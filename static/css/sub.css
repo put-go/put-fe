@@ -1,0 +1,238 @@
+/* 容器样式 - 整体卡片 */
+.service-container {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    margin-bottom: 16px;
+}
+
+/* 服务状态区域 - 居中对齐 */
+.service-status {
+    padding-top: 10px;
+    padding-bottom: 2px;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* 状态行 - 居中对齐并在中间留空隙 */
+.status-row {
+    display: flex;
+    width: 100%;
+    max-width: 600px;
+    justify-content: flex-end;
+    gap: 25px; /* 在项目之间添加间隙 */
+    margin-bottom: 12px;
+    padding: 0 16px; /* 添加这一行 */
+    box-sizing: border-box; /* 添加这一行 */
+}
+
+/* 状态项目 - 调整宽度 */
+.status-item {
+    display: flex;
+    align-items: center;
+    flex: 0 1 calc(50% - 12.5px); /* 修改这一行 */
+    width: calc(50% - 15px); /* 设置宽度为一半减去一半的间隙 */
+    max-width: 200px; /* 限制最大宽度 */
+}
+
+/* 图标容器大小调整 */
+.icon-box {
+    width: 36px; /* 缩小图标的容器宽度 */
+    height: 36px; /* 缩小图标的容器高度 */
+    background-color: #eaf3ff;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    overflow: hidden; /* 确保动画不溢出 */
+}
+
+.icon-box .icon {
+    width: 18px; /* 缩小图标大小 */
+    height: 18px;
+    fill: none;
+    stroke: #4A90E2;
+    stroke-width: 1.5px;
+}
+
+.status-info {
+    margin-left: 12px;
+}
+
+/* 标签和值字体大小调整 */
+.status-label {
+    font-size: 11px;
+    color: #666666;
+    margin-bottom: 2px;
+}
+
+.status-value {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333333;
+    white-space: nowrap; /* 防止文本换行 */
+}
+
+/* 添加特定样式来处理流媒体解锁的值 */
+.dns-unlock {
+    white-space: nowrap; /* 防止文本换行 */
+    letter-spacing: -0.2px; /* 稍微减少字母间距 */
+}
+
+/* 服务状态面板 - 减少上下内边距 */
+.service-stats {
+    background-color: #ffffff;
+    padding: 8px 16px; /* 减少上下内边距 */
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 0 8px;
+}
+
+.stat-value {
+    font-size: 18px;
+    font-weight: 600;
+    color: #4A90E2;
+}
+
+.stat-label {
+    font-size: 12px;
+    color: #666;
+}
+
+/* 节点区域样式 - 减少上内边距 */
+.nodes-section {
+    padding: 12px 1px; /* 减少上内边距 */
+}
+
+/* 走马灯容器 - 三行布局 */
+.marquee-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    height: 120px; /* 设置高度容纳三行 */
+    display: flex;
+    flex-direction: column;
+}
+
+/* 每行走马灯 */
+.marquee-row {
+    flex: 1;
+    display: flex;
+    margin: 4px 0;
+    overflow: hidden;
+}
+
+/* 走马灯内容包装器 - 解决卡顿问题 */
+.marquee-wrapper {
+will-change: transform;
+    display: flex;
+    width: fit-content;
+}
+
+/* 走马灯内容 */
+.marquee-content {
+    display: flex;
+    padding: 0 4px;
+    flex-shrink: 0; /* 防止收缩 */
+}
+
+/* 设置三行不同的动画速度和方向 */
+.row1 .marquee-wrapper {
+will-change: transform;
+    animation: scroll1 50s linear infinite; /* 第一行速度 */
+}
+
+.row2 .marquee-wrapper {
+will-change: transform;
+    animation: scroll2 60s linear infinite; /* 第二行速度稍慢 */
+}
+
+.row3 .marquee-wrapper {
+will-change: transform;
+    animation: scroll3 55s linear infinite; /* 第三行速度介于两者之间 */
+}
+
+/* 优化的无缝滚动动画 - 分别定义三行动画 */
+@keyframes scroll1 {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-100% / 2)); } /* 只移动一半的距离 */
+}
+
+@keyframes scroll2 {
+    0% { transform: translateX(calc(-100% / 2)); } /* 从负方向开始，实现反向效果 */
+    100% { transform: translateX(0); }
+}
+
+@keyframes scroll3 {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-100% / 2)); }
+}
+
+/* 当鼠标悬停时暂停动画 */
+.marquee-row:hover .marquee-wrapper {
+    animation-play-state: paused;
+}
+
+.node-chip {
+    font-size: 13px;
+    padding: 8px 12px;
+    border-radius: 12px;
+    background-color: #f5f9ff;
+    border: 1px solid #e0e7ff;
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-right: 10px;
+    flex-shrink: 0;
+    min-width: 90px;
+    white-space: nowrap;
+}
+
+/* 绿色指示灯基本样式 */
+.indicator {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 6px;
+    background-color: #34c759;
+    box-shadow: 0 0 5px rgba(52, 199, 89, 0.8);
+}
+
+/* Check-in button styles */
+.check-in-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background-color: #eaf3ff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-right: 8px;
+}
+
+.check-in-button:hover {
+    background-color: #d4e6ff;
+    transform: scale(1.05);
+}
+
+.check-in-button .icon {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: #4A90E2;
+    stroke-width: 1.5px;
+}
+
