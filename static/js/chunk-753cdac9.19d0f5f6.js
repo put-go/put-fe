@@ -884,7 +884,7 @@
                         this.$message.error('请先登录');
                         return;
                     }
-                    
+
 
                     fetch(`${window.EnvConfig.serverUrl}/api/v1/user/signin`, {
                         method: 'GET',
